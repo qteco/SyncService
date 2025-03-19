@@ -1,0 +1,13 @@
+/Users/osck53/Documents/SyncService/SyncService.Core/bin/Debug/net8.0/SyncService.Core.deps.json
+/Users/osck53/Documents/SyncService/SyncService.Core/bin/Debug/net8.0/SyncService.Core.dll
+/Users/osck53/Documents/SyncService/SyncService.Core/bin/Debug/net8.0/SyncService.Core.pdb
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.csproj.AssemblyReference.cache
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.AssemblyInfoInputs.cache
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.AssemblyInfo.cs
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.csproj.CoreCompileInputs.cache
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.sourcelink.json
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.dll
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/refint/SyncService.Core.dll
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/SyncService.Core.pdb
+/Users/osck53/Documents/SyncService/SyncService.Core/obj/Debug/net8.0/ref/SyncService.Core.dll

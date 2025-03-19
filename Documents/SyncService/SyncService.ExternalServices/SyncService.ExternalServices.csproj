@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+      <UserSecretsId>b9c5736b-3888-4047-b13f-5109c09ebb13</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SyncService.Core\SyncService.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GraphQL" Version="8.4.0" />
+      <PackageReference Include="GraphQL.Client" Version="6.1.0" />
+      <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="6.1.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.1.25080.5" />
+    </ItemGroup>
+
+</Project>

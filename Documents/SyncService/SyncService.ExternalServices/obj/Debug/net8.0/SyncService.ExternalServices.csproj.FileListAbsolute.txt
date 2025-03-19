@@ -1,0 +1,16 @@
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/bin/Debug/net8.0/SyncService.ExternalServices.deps.json
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/bin/Debug/net8.0/SyncService.ExternalServices.dll
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/bin/Debug/net8.0/SyncService.ExternalServices.pdb
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/bin/Debug/net8.0/SyncService.Core.dll
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/bin/Debug/net8.0/SyncService.Core.pdb
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.csproj.AssemblyReference.cache
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.GeneratedMSBuildEditorConfig.editorconfig
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.AssemblyInfoInputs.cache
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.AssemblyInfo.cs
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.csproj.CoreCompileInputs.cache
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.sourcelink.json
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncServ.C175412A.Up2Date
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.dll
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/refint/SyncService.ExternalServices.dll
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/SyncService.ExternalServices.pdb
+/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/Debug/net8.0/ref/SyncService.ExternalServices.dll

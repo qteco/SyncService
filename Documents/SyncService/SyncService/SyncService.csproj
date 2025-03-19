@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+      <UserSecretsId>d6d54430-cd41-4e80-98d0-55b04846f097</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SyncService.Core\SyncService.Core.csproj" />
+      <ProjectReference Include="..\SyncService.Data\SyncService.Data.csproj" />
+      <ProjectReference Include="..\SyncService.ExternalServices\SyncService.ExternalServices.csproj" />
+    </ItemGroup>
+
+</Project>
