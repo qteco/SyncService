@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SyncService.Core.Models;
 public class ClientSite
 {
@@ -15,7 +17,10 @@ public class ClientSite
     public List<string>? HolidayList {get; set;}
     public string? TimezoneCode { get; set; }
     public bool? Working24x7  { get; set;}
-    public string? ClientId {get; set;}
+    
+    public Guid ClientId { get; set; }
+
+    public Client Client { get; set; }
 }
 
 public class BusinessHour
@@ -25,5 +30,4 @@ public class BusinessHour
     public string? Start {get; set;}
     public string? End {get; set;}
     public string AccountId {get; set;} 
-    public ClientSite ClientSite {get; set;}
 }

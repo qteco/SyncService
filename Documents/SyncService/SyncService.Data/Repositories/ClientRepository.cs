@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SyncService.Core;
 using SyncService.Core.Interfaces.Repositories;
 using SyncService.Core.Models;
 using SyncService.Data.DataContext;
@@ -7,14 +8,14 @@ namespace SyncService.Data.Repositories;
 
 public class ClientRepository : IClientRepository
 {
-    private readonly ClientContext _context;
-    public ClientRepository(ClientContext context)
+    private readonly DatabaseContext _context;
+    public ClientRepository(DatabaseContext context)
     {
         _context = context;
     }
     public Task<List<Client>> GetExistingClientsAsync()
     {
-        return _context.Client.ToListAsync();
+        return _context.Clients.ToListAsync();
     }
     public async Task<List<Client>> GetNewClients(List<Client> clients)
     {
@@ -33,7 +34,7 @@ public class ClientRepository : IClientRepository
 
     public async Task<bool> IsNewClient(Client client)
     {
-        var existingClient = await _context.Client
+        var existingClient = await _context.Clients
             .FirstOrDefaultAsync(c => c.AccountId == client.AccountId);
 
         return existingClient == null;
@@ -43,7 +44,7 @@ public class ClientRepository : IClientRepository
     {
         foreach (var client in clients)
         {
-            var existingClient = await _context.Client
+            var existingClient = await _context.Clients
                 .FirstOrDefaultAsync(c => c.AccountId == client.AccountId);
 
             if (existingClient != null)
@@ -59,6 +60,7 @@ public class ClientRepository : IClientRepository
                 existingClient.HqSite = client.HqSite;
                 existingClient.TechnicianGroups = client.TechnicianGroups;
                 existingClient.CustomFields = client.CustomFields;
+                existingClient.ExactId = client.ExactId;
             }
             else
             {
@@ -75,19 +77,22 @@ public class ClientRepository : IClientRepository
                     HqSite = client.HqSite,
                     TechnicianGroups = client.TechnicianGroups,
                     CustomFields = client.CustomFields,
+                    ExactId = ExactIdGenerator.GenerateExactId()
                 };
-                _context.Client.Add(newClient);
+                _context.Clients.Add(newClient);
             }
         }
         
         await _context.SaveChangesAsync();
     }
 
-    public static string GetClientId(string accountId, ClientContext context)
+    public static async Task<Guid> GetClientId(string accountId, DatabaseContext context)
     {
-        var client = context.Client
-            .FirstOrDefault(c => c.AccountId == accountId);
+        var client = await context.Clients
+            .FirstOrDefaultAsync(c => c.AccountId == accountId);
 
-        return client?.Id.ToString() ?? string.Empty;
+        return client.Id;
     }
+    
+    
 }

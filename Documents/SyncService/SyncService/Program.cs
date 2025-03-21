@@ -22,8 +22,10 @@ builder.Services.AddScoped<IClientSiteRepository, ClientSiteRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<ISuperopsApiClient, SuperopsApiClient>();
 
-builder.Services.AddDbContext<ClientContext>();
-builder.Services.AddDbContext<ClientSiteContext>();
+//builder.Services.AddDbContext<ClientContext>();
+//builder.Services.AddDbContext<ClientSiteContext>();
+builder.Services.AddDbContext<DatabaseContext>();
+
 
 var app = builder.Build();
 

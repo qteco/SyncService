@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SyncService.Core.Models;
@@ -19,22 +20,29 @@ public class Client
     
     [NotMapped]
     public object? CustomFields { get; set; }
+    public List<ClientSite>? ClientSites { get; set; }
+
+    public required string ExactId { get; set; } 
+
 }
 
 public class AccountManager
 {
+    public Guid Id { get; set; }
     public string? UserId { get; set; }
     public string? Name { get; set; }
 }
 
 public class PrimaryContact
 {
+    public Guid Id { get; set; }
     public string? UserId { get; set; }
     public string? Name { get; set; }
 }
 
 public class SecondaryContact
 {
+    public Guid Id { get; set; }
     public string? UserId { get; set; }
     public string? Name { get; set; }
 }

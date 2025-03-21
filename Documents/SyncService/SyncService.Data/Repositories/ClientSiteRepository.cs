@@ -9,13 +9,11 @@ namespace SyncService.Data;
 
 public class ClientSiteRepository : IClientSiteRepository
 {
-    private readonly ClientSiteContext _context;
-    private readonly ClientContext _clientContext;
+    private readonly DatabaseContext _context;
 
-    public ClientSiteRepository(ClientSiteContext context, ClientContext clientContext)
+    public ClientSiteRepository(DatabaseContext context)
     {
         _context = context;
-        _clientContext = clientContext;
     }
     public async Task SyncClientSitesFromSuperops(List<ClientSite> clientSites, string accountId)
     {
@@ -40,7 +38,7 @@ public class ClientSiteRepository : IClientSiteRepository
                 existingClient.HolidayList = clientSite.HolidayList;
                 existingClient.TimezoneCode = clientSite.TimezoneCode;
                 existingClient.Working24x7 = clientSite.Working24x7;
-                existingClient.ClientId = ClientRepository.GetClientId(accountId, _clientContext);
+                existingClient.ClientId = await ClientRepository.GetClientId(accountId, _context);
                 existingClient.BusinessHour = clientSite.BusinessHour?.Select(bh => new BusinessHour
                 {
                     Day = bh.Day,
@@ -66,7 +64,7 @@ public class ClientSiteRepository : IClientSiteRepository
                     HolidayList = clientSite.HolidayList,
                     TimezoneCode = clientSite.TimezoneCode,
                     Working24x7 = clientSite.Working24x7,
-                    ClientId = ClientRepository.GetClientId(accountId, _clientContext),
+                    ClientId = await ClientRepository.GetClientId(accountId, _context),
                     BusinessHour = clientSite.BusinessHour?.Select(bh => new BusinessHour
                     {
                         Day = bh.Day,

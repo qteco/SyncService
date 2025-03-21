@@ -9,6 +9,7 @@ public class ClientService: IClientService
 {
     private readonly IClientRepository _clientRepository;
     private readonly IClientSiteRepository _clientSiteRepository;
+    
     private readonly ISuperopsApiClient _superopsApiClient;
     public ClientService(IClientRepository clientRepository, ISuperopsApiClient superopsApiClient, IClientSiteRepository clientSiteRepository)
     {
@@ -36,12 +37,13 @@ public class ClientService: IClientService
         
         foreach (var client in clients)
         {
-            await _clientSiteRepository.SyncClientSitesFromSuperops(await _superopsApiClient.GetClientSiteDataAsync(client.AccountId), accountId);
             accountId = client.AccountId;
+            await _clientSiteRepository.SyncClientSitesFromSuperops(await _superopsApiClient.GetClientSiteDataAsync(client.AccountId), accountId);
         }
 
         return accountId;
     }
+    
     public async Task<bool> IsNewClient(Client client)
     {
         return await _clientRepository.IsNewClient(client);
