@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "q81mCv74UFboWAEtOom3Bb5UXB0A1GVnI4G2t/HybeiiTdMngyuhr4aArZW5k5MptHU3gtDfKSqd6vtMsmG/gw==",
+  "success": true,
+  "projectFilePath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
+  "expectedPackageFiles": [
+    "/Users/osck53/.nuget/packages/graphql/8.4.0/graphql.8.4.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql-parser/9.5.0/graphql-parser.9.5.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql.analyzers/8.4.0/graphql.analyzers.8.4.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql.client/6.1.0/graphql.client.6.1.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql.client.abstractions/6.1.0/graphql.client.abstractions.6.1.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql.client.abstractions.websocket/6.1.0/graphql.client.abstractions.websocket.6.1.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql.client.serializer.newtonsoft/6.1.0/graphql.client.serializer.newtonsoft.6.1.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/graphql.primitives/6.1.0/graphql.primitives.6.1.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.configuration/10.0.0-preview.1.25080.5/microsoft.extensions.configuration.10.0.0-preview.1.25080.5.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.0-preview.1.25080.5/microsoft.extensions.configuration.abstractions.10.0.0-preview.1.25080.5.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.primitives/10.0.0-preview.1.25080.5/microsoft.extensions.primitives.10.0.0-preview.1.25080.5.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/system.reactive/6.0.0/system.reactive.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

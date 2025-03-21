@@ -1,0 +1,624 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "GraphQL/8.4.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL-Parser": "9.5.0",
+          "GraphQL.Analyzers": "8.4.0"
+        },
+        "compile": {
+          "lib/net6.0/GraphQL.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/GraphQL.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GraphQL-Parser/9.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/GraphQLParser.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/GraphQLParser.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GraphQL.Analyzers/8.4.0": {
+        "type": "package"
+      },
+      "GraphQL.Client/6.1.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL.Client.Abstractions": "6.1.0",
+          "GraphQL.Client.Abstractions.Websocket": "6.1.0",
+          "System.Reactive": "6.0.0"
+        },
+        "compile": {
+          "lib/net8.0/GraphQL.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/GraphQL.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GraphQL.Client.Abstractions/6.1.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL.Primitives": "6.1.0"
+        },
+        "compile": {
+          "lib/net8.0/GraphQL.Client.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/GraphQL.Client.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GraphQL.Client.Abstractions.Websocket/6.1.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL.Client.Abstractions": "6.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/GraphQL.Client.Abstractions.Websocket.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/GraphQL.Client.Abstractions.Websocket.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GraphQL.Client.Serializer.Newtonsoft/6.1.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL.Client.Abstractions.Websocket": "6.1.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/GraphQL.Client.Serializer.Newtonsoft.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/GraphQL.Client.Serializer.Newtonsoft.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GraphQL.Primitives/6.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/GraphQL.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/GraphQL.Primitives.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration/10.0.0-preview.1.25080.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0-preview.1.25080.5",
+          "Microsoft.Extensions.Primitives": "10.0.0-preview.1.25080.5"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.0-preview.1.25080.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.0-preview.1.25080.5"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/10.0.0-preview.1.25080.5": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Reactive/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "SyncService.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/SyncService.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SyncService.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GraphQL/8.4.0": {
+      "sha512": "LxDsHVMGhknSCC/Uz+CXMtirS/UcRryMOtyQo80KjeGd5Q7eZhAVQgKRqOt4ZV65C8x26m3j92TiFRxaSNfswg==",
+      "type": "package",
+      "path": "graphql/8.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "graphql.8.4.0.nupkg.sha512",
+        "graphql.nuspec",
+        "lib/net5.0/GraphQL.dll",
+        "lib/net5.0/GraphQL.xml",
+        "lib/net6.0/GraphQL.dll",
+        "lib/net6.0/GraphQL.xml",
+        "lib/netstandard2.0/GraphQL.dll",
+        "lib/netstandard2.0/GraphQL.xml",
+        "lib/netstandard2.1/GraphQL.dll",
+        "lib/netstandard2.1/GraphQL.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL-Parser/9.5.0": {
+      "sha512": "5XWJGKHdVi8pyD4P0EglmJmlXEGs0HzvGlEBf3+/Ve1jLYBBKIOkKvY0Ej17b9Kn1bbBxkrmghqbmsMbkLL1nQ==",
+      "type": "package",
+      "path": "graphql-parser/9.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "graphql-parser.9.5.0.nupkg.sha512",
+        "graphql-parser.nuspec",
+        "lib/net6.0/GraphQLParser.dll",
+        "lib/net6.0/GraphQLParser.xml",
+        "lib/netstandard2.0/GraphQLParser.dll",
+        "lib/netstandard2.0/GraphQLParser.xml",
+        "lib/netstandard2.1/GraphQLParser.dll",
+        "lib/netstandard2.1/GraphQLParser.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL.Analyzers/8.4.0": {
+      "sha512": "1TAs0JouXQ/mec6UA1z9mDEpGI9/YeXUol3KRqZxX35u8zgciwzpaKzabs39uGryLjSFYhvtLfF4C1rMWsXKVQ==",
+      "type": "package",
+      "path": "graphql.analyzers/8.4.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "analyzers/dotnet/cs/GraphQL.Analyzers.CodeFixes.dll",
+        "analyzers/dotnet/cs/GraphQL.Analyzers.dll",
+        "graphql.analyzers.8.4.0.nupkg.sha512",
+        "graphql.analyzers.nuspec",
+        "logo.64x64.png",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "GraphQL.Client/6.1.0": {
+      "sha512": "oKliAxtNuZDMxO9079mjSbwA0YwhjXBzVnVPuNZ3HI4OllO++CcOLT30l90mM/fxCAMaa8GU4ZYMwD9YjLkyiw==",
+      "type": "package",
+      "path": "graphql.client/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "graphql.client.6.1.0.nupkg.sha512",
+        "graphql.client.nuspec",
+        "lib/net461/GraphQL.Client.dll",
+        "lib/net461/GraphQL.Client.xml",
+        "lib/net6.0/GraphQL.Client.dll",
+        "lib/net6.0/GraphQL.Client.xml",
+        "lib/net7.0/GraphQL.Client.dll",
+        "lib/net7.0/GraphQL.Client.xml",
+        "lib/net8.0/GraphQL.Client.dll",
+        "lib/net8.0/GraphQL.Client.xml",
+        "lib/netstandard2.0/GraphQL.Client.dll",
+        "lib/netstandard2.0/GraphQL.Client.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL.Client.Abstractions/6.1.0": {
+      "sha512": "Za31wjKLEeROZYJmp0Lmj/TLQ1Yw6x6QM0JHABcuyMC3OSopr34ufayrtdxtbL1a3129FTVFKOFC0hcooSQoJQ==",
+      "type": "package",
+      "path": "graphql.client.abstractions/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "graphql.client.abstractions.6.1.0.nupkg.sha512",
+        "graphql.client.abstractions.nuspec",
+        "lib/net6.0/GraphQL.Client.Abstractions.dll",
+        "lib/net6.0/GraphQL.Client.Abstractions.xml",
+        "lib/net7.0/GraphQL.Client.Abstractions.dll",
+        "lib/net7.0/GraphQL.Client.Abstractions.xml",
+        "lib/net8.0/GraphQL.Client.Abstractions.dll",
+        "lib/net8.0/GraphQL.Client.Abstractions.xml",
+        "lib/netstandard2.0/GraphQL.Client.Abstractions.dll",
+        "lib/netstandard2.0/GraphQL.Client.Abstractions.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL.Client.Abstractions.Websocket/6.1.0": {
+      "sha512": "PjdG3q4MzPsa5NiBOBhuIRMRTo59der5bFmX2r1gSS3RIjytwpooxF2RffFCBh16sqbwuH1/dllDcNG+EJt1qA==",
+      "type": "package",
+      "path": "graphql.client.abstractions.websocket/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "graphql.client.abstractions.websocket.6.1.0.nupkg.sha512",
+        "graphql.client.abstractions.websocket.nuspec",
+        "lib/netstandard2.0/GraphQL.Client.Abstractions.Websocket.dll",
+        "lib/netstandard2.0/GraphQL.Client.Abstractions.Websocket.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL.Client.Serializer.Newtonsoft/6.1.0": {
+      "sha512": "newJE9b6C0KXvQWKDDt/+oqJd7TC3YWUXFQW3qbdNGYbS5GyU5tzmG4/Hn6d604dMRRFVqrUwtFbhf6mxncrKw==",
+      "type": "package",
+      "path": "graphql.client.serializer.newtonsoft/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "graphql.client.serializer.newtonsoft.6.1.0.nupkg.sha512",
+        "graphql.client.serializer.newtonsoft.nuspec",
+        "lib/netstandard2.0/GraphQL.Client.Serializer.Newtonsoft.dll",
+        "lib/netstandard2.0/GraphQL.Client.Serializer.Newtonsoft.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL.Primitives/6.1.0": {
+      "sha512": "L8yQ70Wd9p8hMJvnmpgyZfr2R6Q7S0/lPyEBI1tacJa5XzsoJSVtHdmfsMaHyufwk03hlUsBXgNerAs66kxHdA==",
+      "type": "package",
+      "path": "graphql.primitives/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "graphql.primitives.6.1.0.nupkg.sha512",
+        "graphql.primitives.nuspec",
+        "lib/net6.0/GraphQL.Primitives.dll",
+        "lib/net6.0/GraphQL.Primitives.xml",
+        "lib/net7.0/GraphQL.Primitives.dll",
+        "lib/net7.0/GraphQL.Primitives.xml",
+        "lib/net8.0/GraphQL.Primitives.dll",
+        "lib/net8.0/GraphQL.Primitives.xml",
+        "lib/netstandard2.0/GraphQL.Primitives.dll",
+        "lib/netstandard2.0/GraphQL.Primitives.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "Microsoft.Extensions.Configuration/10.0.0-preview.1.25080.5": {
+      "sha512": "6eO/BKLwr6BA7xcTuAEUtB0kJj1tcXmF0hz2ak8TQZMb3X8PVRIK0yh1hfTxI885oXDXPZQw4pa5cuo0Y6M6ZA==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/10.0.0-preview.1.25080.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Configuration.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.targets",
+        "lib/net10.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net10.0/Microsoft.Extensions.Configuration.xml",
+        "lib/net462/Microsoft.Extensions.Configuration.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.xml",
+        "lib/net8.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net8.0/Microsoft.Extensions.Configuration.xml",
+        "lib/net9.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net9.0/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.10.0.0-preview.1.25080.5.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.0-preview.1.25080.5": {
+      "sha512": "tsw7Qt0TnaDIllzOG+YgEzjFm5TbSwbUVAO0Px4zYCUkWbaKAYbccHwMRtaWYvoEFXGFz3+B7DGHSs/txRxe6g==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.0-preview.1.25080.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Configuration.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.Abstractions.targets",
+        "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/net462/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "microsoft.extensions.configuration.abstractions.10.0.0-preview.1.25080.5.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/10.0.0-preview.1.25080.5": {
+      "sha512": "vuci/NLr6n/4Vxig68IwDxu2J6OMv6k9d8PXi+QHR2z7EZciBxL1R5Ri3kdMUZxZfD38M/AcUWllGcynSgPJSg==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/10.0.0-preview.1.25080.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Primitives.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets",
+        "lib/net10.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net10.0/Microsoft.Extensions.Primitives.xml",
+        "lib/net462/Microsoft.Extensions.Primitives.dll",
+        "lib/net462/Microsoft.Extensions.Primitives.xml",
+        "lib/net8.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net8.0/Microsoft.Extensions.Primitives.xml",
+        "lib/net9.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net9.0/Microsoft.Extensions.Primitives.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.10.0.0-preview.1.25080.5.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "System.Reactive/6.0.0": {
+      "sha512": "31kfaW4ZupZzPsI5PVe77VhnvFF55qgma7KZr/E0iFTs6fmdhhG8j0mgEx620iLTey1EynOkEfnyTjtNEpJzGw==",
+      "type": "package",
+      "path": "system.reactive/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net6.0-windows10.0.19041/_._",
+        "build/net6.0/_._",
+        "buildTransitive/net6.0-windows10.0.19041/_._",
+        "buildTransitive/net6.0/_._",
+        "icon.png",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net6.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net6.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net6.0/System.Reactive.dll",
+        "lib/net6.0/System.Reactive.xml",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.18362/System.Reactive.dll",
+        "lib/uap10.0.18362/System.Reactive.pri",
+        "lib/uap10.0.18362/System.Reactive.xml",
+        "readme.md",
+        "system.reactive.6.0.0.nupkg.sha512",
+        "system.reactive.nuspec"
+      ]
+    },
+    "SyncService.Core/1.0.0": {
+      "type": "project",
+      "path": "../SyncService.Core/SyncService.Core.csproj",
+      "msbuildProject": "../SyncService.Core/SyncService.Core.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "GraphQL >= 8.4.0",
+      "GraphQL.Client >= 6.1.0",
+      "GraphQL.Client.Serializer.Newtonsoft >= 6.1.0",
+      "Microsoft.Extensions.Configuration >= 10.0.0-preview.1.25080.5",
+      "SyncService.Core >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/osck53/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
+      "projectName": "SyncService.ExternalServices",
+      "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
+      "packagesPath": "/Users/osck53/.nuget/packages/",
+      "outputPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/osck53/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
+              "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "GraphQL": {
+            "target": "Package",
+            "version": "[8.4.0, )"
+          },
+          "GraphQL.Client": {
+            "target": "Package",
+            "version": "[6.1.0, )"
+          },
+          "GraphQL.Client.Serializer.Newtonsoft": {
+            "target": "Package",
+            "version": "[6.1.0, )"
+          },
+          "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[10.0.0-preview.1.25080.5, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
