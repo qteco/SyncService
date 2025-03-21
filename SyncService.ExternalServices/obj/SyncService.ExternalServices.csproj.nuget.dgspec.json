@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj": {}
+    "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj": {}
   },
   "projects": {
-    "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
+    "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj",
+        "projectUniqueName": "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj",
         "projectName": "SyncService.Core",
-        "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj",
+        "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj",
         "packagesPath": "/Users/osck53/.nuget/packages/",
-        "outputPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/obj/",
+        "outputPath": "/Users/osck53/Documents/SyncService/SyncService.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/osck53/.nuget/NuGet/NuGet.Config"
@@ -68,14 +68,14 @@
         }
       }
     },
-    "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj": {
+    "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
+        "projectUniqueName": "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
         "projectName": "SyncService.ExternalServices",
-        "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
+        "projectPath": "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
         "packagesPath": "/Users/osck53/.nuget/packages/",
-        "outputPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/obj/",
+        "outputPath": "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/osck53/.nuget/NuGet/NuGet.Config"
@@ -90,8 +90,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
-                "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
+              "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
+                "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
               }
             }
           }

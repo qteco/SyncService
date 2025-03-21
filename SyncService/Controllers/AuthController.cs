@@ -25,7 +25,6 @@ public class AuthController : ControllerBase
             return BadRequest("Authorization code not provided.");
         }
 
-        // 🔹 Step 1: Exchange Authorization Code for Access Token
         var tokenRequest = new FormUrlEncodedContent(new[]
         {
             new KeyValuePair<string, string>("grant_type", "authorization_code"),
@@ -49,8 +48,6 @@ public class AuthController : ControllerBase
         Console.WriteLine(tokenResponse);
         Console.WriteLine(tokenJson);
 
-
-        // 🔹 Step 2: Return the Access Token
         return Ok(new
         {
             AccessToken = tokenData.AccessToken,
@@ -60,7 +57,6 @@ public class AuthController : ControllerBase
     }
 }
 
-// 🔹 Helper class to deserialize token response
 public class TokenResponse
 {
     public string AccessToken { get; set; }

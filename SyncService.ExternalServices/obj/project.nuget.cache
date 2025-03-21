@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q81mCv74UFboWAEtOom3Bb5UXB0A1GVnI4G2t/HybeiiTdMngyuhr4aArZW5k5MptHU3gtDfKSqd6vtMsmG/gw==",
+  "dgSpecHash": "rO6rmvoQ93o=",
   "success": true,
-  "projectFilePath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
+  "projectFilePath": "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
   "expectedPackageFiles": [
     "/Users/osck53/.nuget/packages/graphql/8.4.0/graphql.8.4.0.nupkg.sha512",
     "/Users/osck53/.nuget/packages/graphql-parser/9.5.0/graphql-parser.9.5.0.nupkg.sha512",

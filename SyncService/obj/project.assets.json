@@ -3035,11 +3035,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService/SyncService.csproj",
+      "projectUniqueName": "/Users/osck53/Documents/SyncService/SyncService/SyncService.csproj",
       "projectName": "SyncService",
-      "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService/SyncService.csproj",
+      "projectPath": "/Users/osck53/Documents/SyncService/SyncService/SyncService.csproj",
       "packagesPath": "/Users/osck53/.nuget/packages/",
-      "outputPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService/obj/",
+      "outputPath": "/Users/osck53/Documents/SyncService/SyncService/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/osck53/.nuget/NuGet/NuGet.Config"
@@ -3054,14 +3054,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
-              "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
+            "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
+              "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
             },
-            "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Data/SyncService.Data.csproj": {
-              "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Data/SyncService.Data.csproj"
+            "/Users/osck53/Documents/SyncService/SyncService.Data/SyncService.Data.csproj": {
+              "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Data/SyncService.Data.csproj"
             },
-            "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj": {
-              "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj"
+            "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj": {
+              "projectPath": "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj"
             }
           }
         }

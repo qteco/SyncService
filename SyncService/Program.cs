@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using SyncService.Core.Interfaces;
 using SyncService.Core.Interfaces.ApiClients;
 using SyncService.Core.Interfaces.Repositories;
 using SyncService.Core.Interfaces.Services;
@@ -22,10 +20,7 @@ builder.Services.AddScoped<IClientSiteRepository, ClientSiteRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<ISuperopsApiClient, SuperopsApiClient>();
 
-//builder.Services.AddDbContext<ClientContext>();
-//builder.Services.AddDbContext<ClientSiteContext>();
 builder.Services.AddDbContext<DatabaseContext>();
-
 
 var app = builder.Build();
 

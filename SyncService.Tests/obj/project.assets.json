@@ -6508,11 +6508,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Tests/SyncService.Tests.csproj",
+      "projectUniqueName": "/Users/osck53/Documents/SyncService/SyncService.Tests/SyncService.Tests.csproj",
       "projectName": "SyncService.Tests",
-      "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Tests/SyncService.Tests.csproj",
+      "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Tests/SyncService.Tests.csproj",
       "packagesPath": "/Users/osck53/.nuget/packages/",
-      "outputPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Tests/obj/",
+      "outputPath": "/Users/osck53/Documents/SyncService/SyncService.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/osck53/.nuget/NuGet/NuGet.Config"
@@ -6527,11 +6527,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
-              "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
+            "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj": {
+              "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Core/SyncService.Core.csproj"
             },
-            "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Data/SyncService.Data.csproj": {
-              "projectPath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Data/SyncService.Data.csproj"
+            "/Users/osck53/Documents/SyncService/SyncService.Data/SyncService.Data.csproj": {
+              "projectPath": "/Users/osck53/Documents/SyncService/SyncService.Data/SyncService.Data.csproj"
             }
           }
         }

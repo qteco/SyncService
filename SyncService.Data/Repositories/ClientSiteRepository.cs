@@ -10,7 +10,6 @@ namespace SyncService.Data;
 public class ClientSiteRepository : IClientSiteRepository
 {
     private readonly DatabaseContext _context;
-
     public ClientSiteRepository(DatabaseContext context)
     {
         _context = context;

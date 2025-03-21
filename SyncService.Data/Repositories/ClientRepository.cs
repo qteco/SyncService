@@ -31,7 +31,6 @@ public class ClientRepository : IClientRepository
 
         return newClients;
     }
-
     public async Task<bool> IsNewClient(Client client)
     {
         var existingClient = await _context.Clients
@@ -39,7 +38,6 @@ public class ClientRepository : IClientRepository
 
         return existingClient == null;
     }
-
     public async Task SyncClientsFromSuperopsToDatabase(List<Client> clients)
     {
         foreach (var client in clients)
@@ -60,7 +58,6 @@ public class ClientRepository : IClientRepository
                 existingClient.HqSite = client.HqSite;
                 existingClient.TechnicianGroups = client.TechnicianGroups;
                 existingClient.CustomFields = client.CustomFields;
-                existingClient.ExactId = client.ExactId;
             }
             else
             {
@@ -85,7 +82,6 @@ public class ClientRepository : IClientRepository
         
         await _context.SaveChangesAsync();
     }
-
     public static async Task<Guid> GetClientId(string accountId, DatabaseContext context)
     {
         var client = await context.Clients

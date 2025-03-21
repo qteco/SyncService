@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MmCy1gAu130AO5ZpImHeNXiS/XVDQBFs+K3ZRQoe5a1BcVC+eQGdITGPod/zefjvF+k2WiRbRzNYt4p//5l54A==",
+  "dgSpecHash": "aJEAfO80TuQ=",
   "success": true,
-  "projectFilePath": "/Users/osck53/Documents/SyncService/Documents/SyncService/SyncService.Data/SyncService.Data.csproj",
+  "projectFilePath": "/Users/osck53/Documents/SyncService/SyncService.Data/SyncService.Data.csproj",
   "expectedPackageFiles": [
     "/Users/osck53/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/osck53/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
