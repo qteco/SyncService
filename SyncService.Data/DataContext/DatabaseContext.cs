@@ -14,14 +14,9 @@ public class DatabaseContext : DbContext
     public DbSet<ClientSite> ClientSites { get; set; }
     public DbSet<BusinessHour> BusinessHours { get; set; }
     public DbSet<ExactClient> ExactClients { get; set; }
-    
-    private string _databaseConnection { get; set; }
-
-    public DatabaseContext(DbContextOptions<DatabaseContext> options, IConfiguration configuration) : base(options)
+    public DatabaseContext(DbContextOptions options) : base(options) 
     {
-        _databaseConnection = configuration["DatabaseConnection"];
     }
-    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -46,15 +41,5 @@ public class DatabaseContext : DbContext
             .WithOne() 
             .HasForeignKey<ExactClient>(ec => ec.Code)  
             .HasPrincipalKey<Client>(c => c.ExactId);
-        
-        
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseNpgsql(_databaseConnection);
-        }
     }
 }

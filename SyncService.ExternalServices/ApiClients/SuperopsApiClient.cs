@@ -20,11 +20,10 @@ public class SuperopsApiClient : ISuperopsApiClient
 
     private readonly string _subDomain = "qtecobv";
 
-    public SuperopsApiClient(IConfiguration configuration)
+    public SuperopsApiClient()
     {
-        _apiToken = configuration["SuperopsApiToken"];
         GraphQlClient = new GraphQLHttpClient(_uri, new NewtonsoftJsonSerializer());
-        GraphQlClient.HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _apiToken);
+        GraphQlClient.HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("SuperopsApiToken"));
         GraphQlClient.HttpClient.DefaultRequestHeaders.Add("CustomerSubDomain", _subDomain);
     }
     public async Task<List<Client>> GetClientListAsync()

@@ -21,4 +21,9 @@ public class ExactApiClient : IExactApiClient
 
         
     }
+
+    public bool CheckIfClientExists(string code)
+    {
+        throw new NotImplementedException();
+    }
 }

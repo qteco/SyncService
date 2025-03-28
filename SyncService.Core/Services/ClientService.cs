@@ -48,4 +48,6 @@ public class ClientService: IClientService
     {
         return await _clientRepository.IsNewClient(client);
     }
+
+    
 }

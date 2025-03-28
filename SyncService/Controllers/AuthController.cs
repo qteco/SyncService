@@ -1,65 +1,111 @@
-using System.Text.Json;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using SyncService.Core.Interfaces.Services;
-using SyncService.Core.Models;
-
-namespace SyncService.Controllers;
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly HttpClient _httpClient;
-    
     public AuthController(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
 
+    [HttpGet("login")]
+    public IActionResult Login()
+    {
+        var clientId = Environment.GetEnvironmentVariable("ExactClientId");
+        var redirectUri = "https://qtecotest.nl:7198/api/Auth/callback"; 
+        var responseType = "code"; 
+        
+        var authUrl = $"https://start.exactonline.nl/api/oauth2/auth?" +
+                      $"client_id={clientId}" +
+                      $"&redirect_uri={Uri.EscapeDataString(redirectUri)}" +
+                      $"&response_type={responseType}";
+
+        return Redirect(authUrl); 
+    }
+
     [HttpGet("callback")]
-    public async Task<IActionResult> Callback([FromQuery] string code, [FromQuery] string state)
+    public async Task<IActionResult> Callback([FromQuery] string code)
     {
         if (string.IsNullOrEmpty(code))
         {
-            return BadRequest("Authorization code not provided.");
+            return BadRequest("Authorization code is missing.");
         }
 
-        var tokenRequest = new FormUrlEncodedContent(new[]
+        var tokenUrl = "https://start.exactonline.nl/api/oauth2/token"; 
+
+        var requestData = new FormUrlEncodedContent(new[]
         {
             new KeyValuePair<string, string>("grant_type", "authorization_code"),
-            new KeyValuePair<string, string>("client_id", "8cd00572-1569-46a7-8858-4cf1a2b4110f"),
-            new KeyValuePair<string, string>("client_secret", "PbOCYfnKnoQn"),
-            new KeyValuePair<string, string>("redirect_uri", "https://localhost:7198/api/Auth/callback"),
-            new KeyValuePair<string, string>("code", code)
+            new KeyValuePair<string, string>("client_id", Environment.GetEnvironmentVariable("ExactClientId")),
+            new KeyValuePair<string, string>("client_secret", Environment.GetEnvironmentVariable("ExactClientSecret")),
+            new KeyValuePair<string, string>("redirect_uri", "https://qtecotest.nl:7198/api/Auth/callback"),
+            new KeyValuePair<string, string>("code", code.Replace("%21", "!")), 
         });
 
-        var tokenResponse = await _httpClient.PostAsync("https://start.exactonline.nl/api/oauth2/token", tokenRequest);
-        var tokenJson = await tokenResponse.Content.ReadAsStringAsync();
-
-        if (!tokenResponse.IsSuccessStatusCode)
+        try
         {
-            return StatusCode((int)tokenResponse.StatusCode, tokenJson);
+            var response = await _httpClient.PostAsync(tokenUrl, requestData);
+            response.EnsureSuccessStatusCode();
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var tokenResponse = JsonSerializer.Deserialize<TokenResponse>(responseContent,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            return Ok(tokenResponse);
+        }
+        catch (HttpRequestException ex)
+        {
+            return StatusCode(500, $"Error fetching access token: {ex.Message}");
+        }
+    }
+    
+    [HttpGet("refreshToken")]
+    public async Task<IActionResult> RefreshToken([FromQuery] string refreshToken)
+    {
+        var tokenUrl = "https://start.exactonline.nl/api/oauth2/token"; 
+
+        var requestData = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("grant_type", "authorization_code"),
+            new KeyValuePair<string, string>("refresh_token", refreshToken),
+            new KeyValuePair<string, string>("client_id", Environment.GetEnvironmentVariable("ExactClientId")),
+            new KeyValuePair<string, string>("client_secret", Environment.GetEnvironmentVariable("ExactClientSecret")),
+        });
+
+        try
+        {
+            var response = await _httpClient.PostAsync(tokenUrl, requestData);
+            response.EnsureSuccessStatusCode();
+            
+            return Ok(response.Content.ReadAsStringAsync().Result);
         }
 
-        var tokenData = JsonSerializer.Deserialize<TokenResponse>(tokenJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-        Console.WriteLine(tokenData.AccessToken);
-        Console.WriteLine(tokenResponse);
-        Console.WriteLine(tokenJson);
-
-        return Ok(new
+        catch (HttpRequestException ex)
         {
-            AccessToken = tokenData.AccessToken,
-            RefreshToken = tokenData.RefreshToken,
-            ExpiresIn = tokenData.ExpiresIn
-        });
+            return StatusCode(500, $"Error fetching refresh token: {ex.Message}");
+        }
     }
 }
+public class TokenResponse 
+{ 
+    public string Access_Token { get; set; }
+    public string Token_Type { get; set; }
+    public string Expires_In { get; set; }
+    public string Refresh_Token { get; set; }
+}
 
-public class TokenResponse
+public class RefreshToken
 {
-    public string AccessToken { get; set; }
-    public string RefreshToken { get; set; }
-    public int ExpiresIn { get; set; }
+    public string Grant_type { get; set; }
+    public string Refresh_token { get; set; }
+    public string Client_id { get; set; }
+    public string Client_secret { get; set; }
 }

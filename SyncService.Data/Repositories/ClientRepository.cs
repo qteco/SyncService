@@ -89,6 +89,4 @@ public class ClientRepository : IClientRepository
 
         return client.Id;
     }
-    
-    
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SyncService.Core.Interfaces.Services;
 using SyncService.Core.Models;
+using SyncService.Data.Repositories;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -30,5 +31,4 @@ public class ClientController : ControllerBase
     {
         await _clientService.SyncClientSites();
     }
-   
 }

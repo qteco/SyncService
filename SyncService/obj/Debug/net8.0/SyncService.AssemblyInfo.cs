@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SyncService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+addfd050f9c3e91636818639b072f176430fc7ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8bd4102cc492bcef397567a4f493d8a66fa8abf8")]
 [assembly: System.Reflection.AssemblyProductAttribute("SyncService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SyncService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

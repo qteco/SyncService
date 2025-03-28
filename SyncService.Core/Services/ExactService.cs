@@ -1,3 +1,5 @@
+using SyncService.Core.Classes;
+using SyncService.Core.Interfaces.ApiClients;
 using SyncService.Core.Interfaces.Repositories;
 using SyncService.Core.Interfaces.Services;
 using SyncService.Core.Models;
@@ -6,18 +8,33 @@ namespace SyncService.Core.Services;
 
 public class ExactService : IExactService
 {
-    private IClientRepository _clientRepository;
+    private readonly IExactRepository _exactRepository;
+    private readonly IClientService _clientService;
+    private readonly IClientSiteService _clientSiteService;
 
-    public ExactService(IClientRepository clientRepository)
+
+    public ExactService(IExactRepository exactRepository, IClientService clientService, IClientSiteService clientSiteService)
     {
-        _clientRepository = clientRepository;
+        _exactRepository = exactRepository;
+        _clientService = clientService;
+        _clientSiteService = clientSiteService;
+    }
+
+    public bool IsClientInExact(string code)
+    {
+        return _exactRepository.IsClientInExact(code);
+    }
+
+    public async Task SyncNewClients()
+    { 
+        List<Client> clients = await _clientService.GetDatabaseClients();
+        List<ClientSite> sites = await _clientSiteService.GetExistingClientSitesAsync();
+        
+        await _exactRepository.SyncNewClients(CreateExactTransferList(clients, sites));
     }
     
-    public async Task PostClientInExact(Client client)
+    public List<ExactClientDTO> CreateExactTransferList(List<Client> clients, List<ClientSite> sites)
     {
-        List<Client> existingClients = await _clientRepository.GetExistingClientsAsync();
-        List<Client> newClients = await _clientRepository.GetNewClients(existingClients);
-        
-        throw new NotImplementedException();
+        return _exactRepository.CreateExactTransferList(clients, sites);
     }
 }

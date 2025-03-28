@@ -14,6 +14,17 @@ public class ClientSiteRepository : IClientSiteRepository
     {
         _context = context;
     }
+    
+    public Task<List<ClientSite>> GetExistingClientSitesAsync()
+    {
+        return _context.ClientSites.ToListAsync();
+    }
+
+    public Task<Client> GetClientData(Guid clientId)
+    {
+        return _context.Clients.FirstOrDefaultAsync(c => c.Id == clientId);
+    }
+
     public async Task SyncClientSitesFromSuperops(List<ClientSite> clientSites, string accountId)
     {
         foreach (var clientSite in clientSites)
