@@ -14,7 +14,7 @@ public class SuperopsApiClient : ISuperopsApiClient
     private List<Client> Clients { get; set; }
     private List<ClientSite> ClientSites { get; set; }
     private GraphQLHttpClient GraphQlClient { get; }
-    private string _apiToken { get; }
+    private string _apiToken { get;}
     
     private readonly string _uri = "https://api.superops.ai/msp";
 

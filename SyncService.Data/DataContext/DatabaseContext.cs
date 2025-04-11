@@ -13,7 +13,7 @@ public class DatabaseContext : DbContext
     public DbSet<HqSite> HqSites { get; set; }
     public DbSet<ClientSite> ClientSites { get; set; }
     public DbSet<BusinessHour> BusinessHours { get; set; }
-    public DbSet<ExactClient> ExactClients { get; set; }
+    public DbSet<Core.Models.ExactClient> ExactClients { get; set; }
     public DatabaseContext(DbContextOptions options) : base(options) 
     {
     }
@@ -36,10 +36,10 @@ public class DatabaseContext : DbContext
             .HasForeignKey(cs => cs.ClientId)
             .OnDelete(DeleteBehavior.Cascade);
         
-        modelBuilder.Entity<ExactClient>()
+        modelBuilder.Entity<Core.Models.ExactClient>()
             .HasOne(ec => ec.Client) 
             .WithOne() 
-            .HasForeignKey<ExactClient>(ec => ec.Code)  
-            .HasPrincipalKey<Client>(c => c.ExactId);
+            .HasForeignKey<Core.Models.ExactClient>(ec => ec.Code)  
+            .HasPrincipalKey<Client>(c => c.ExactCode);
     }
 }

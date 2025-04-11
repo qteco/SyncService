@@ -13,9 +13,9 @@ public class ClientRepository : IClientRepository
     {
         _context = context;
     }
-    public Task<List<Client>> GetExistingClientsAsync()
+    public async Task<List<Client>> GetExistingClientsAsync()
     {
-        return _context.Clients.ToListAsync();
+        return await _context.Clients.ToListAsync();;
     }
     public async Task<List<Client>> GetNewClients(List<Client> clients)
     {
@@ -74,7 +74,7 @@ public class ClientRepository : IClientRepository
                     HqSite = client.HqSite,
                     TechnicianGroups = client.TechnicianGroups,
                     CustomFields = client.CustomFields,
-                    ExactId = ExactIdGenerator.GenerateExactId()
+                    ExactCode = ExactIdGenerator.GenerateExactId()
                 };
                 _context.Clients.Add(newClient);
             }

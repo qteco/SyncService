@@ -5,15 +5,19 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Memory;
+using SyncService.Core.Classes;
 
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly HttpClient _httpClient;
-    public AuthController(HttpClient httpClient)
+    private readonly IMemoryCache _cache;
+    public AuthController(IMemoryCache cache, HttpClient httpClient)
     {
         _httpClient = httpClient;
+        _cache = cache;
     }
 
     [HttpGet("login")]
@@ -58,6 +62,9 @@ public class AuthController : ControllerBase
             var responseContent = await response.Content.ReadAsStringAsync();
             var tokenResponse = JsonSerializer.Deserialize<TokenResponse>(responseContent,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            
+            _cache.Set("AccessToken", tokenResponse.Access_Token, TimeSpan.FromSeconds(int.Parse(tokenResponse.Expires_In)));
+            _cache.Set("RefreshToken", tokenResponse.Refresh_Token);
 
             return Ok(tokenResponse);
         }
@@ -74,7 +81,7 @@ public class AuthController : ControllerBase
 
         var requestData = new FormUrlEncodedContent(new[]
         {
-            new KeyValuePair<string, string>("grant_type", "authorization_code"),
+            new KeyValuePair<string, string>("grant_type", "refresh_token"), 
             new KeyValuePair<string, string>("refresh_token", refreshToken),
             new KeyValuePair<string, string>("client_id", Environment.GetEnvironmentVariable("ExactClientId")),
             new KeyValuePair<string, string>("client_secret", Environment.GetEnvironmentVariable("ExactClientSecret")),
@@ -83,29 +90,28 @@ public class AuthController : ControllerBase
         try
         {
             var response = await _httpClient.PostAsync(tokenUrl, requestData);
-            response.EnsureSuccessStatusCode();
-            
-            return Ok(response.Content.ReadAsStringAsync().Result);
-        }
+            var responseContent = await response.Content.ReadAsStringAsync(); 
 
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode, $"Error refreshing token: {responseContent}");
+            }
+
+            var tokenResponse = JsonSerializer.Deserialize<TokenResponse>(responseContent,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            _cache.Set("AccessToken", tokenResponse.Access_Token, TimeSpan.FromSeconds(int.Parse(tokenResponse.Expires_In)));
+            _cache.Set("RefreshToken", tokenResponse.Refresh_Token);
+
+            return Ok(tokenResponse);
+        }
         catch (HttpRequestException ex)
         {
-            return StatusCode(500, $"Error fetching refresh token: {ex.Message}");
+            return StatusCode(500, $"HTTP request error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Unexpected error: {ex.Message}");
         }
     }
-}
-public class TokenResponse 
-{ 
-    public string Access_Token { get; set; }
-    public string Token_Type { get; set; }
-    public string Expires_In { get; set; }
-    public string Refresh_Token { get; set; }
-}
-
-public class RefreshToken
-{
-    public string Grant_type { get; set; }
-    public string Refresh_token { get; set; }
-    public string Client_id { get; set; }
-    public string Client_secret { get; set; }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "S31XFhtvs7D7+y/qetm/Rnucpx2uLsxKL114I7aQIla9d4jrvNbsvWn8pl+lrVaxxYnmoyypRRIXApI6XYbg5A==",
+  "dgSpecHash": "RsZPNKznGE7sG9VNKeFPB5iNBmne8ABwy1wAbdx68gW8xdkwaW3BiB/ko7uP19VUGfdYLXDiVUs5sE7uwHTebQ==",
   "success": true,
   "projectFilePath": "/Users/osck53/Documents/SyncService/SyncService.ExternalServices/SyncService.ExternalServices.csproj",
   "expectedPackageFiles": [
@@ -12,9 +12,14 @@
     "/Users/osck53/.nuget/packages/graphql.client.abstractions.websocket/6.1.0/graphql.client.abstractions.websocket.6.1.0.nupkg.sha512",
     "/Users/osck53/.nuget/packages/graphql.client.serializer.newtonsoft/6.1.0/graphql.client.serializer.newtonsoft.6.1.0.nupkg.sha512",
     "/Users/osck53/.nuget/packages/graphql.primitives/6.1.0/graphql.primitives.6.1.0.nupkg.sha512",
-    "/Users/osck53/.nuget/packages/microsoft.extensions.configuration/10.0.0-preview.1.25080.5/microsoft.extensions.configuration.10.0.0-preview.1.25080.5.nupkg.sha512",
-    "/Users/osck53/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.0-preview.1.25080.5/microsoft.extensions.configuration.abstractions.10.0.0-preview.1.25080.5.nupkg.sha512",
-    "/Users/osck53/.nuget/packages/microsoft.extensions.primitives/10.0.0-preview.1.25080.5/microsoft.extensions.primitives.10.0.0-preview.1.25080.5.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.caching.memory/8.0.1/microsoft.extensions.caching.memory.8.0.1.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.configuration/8.0.0/microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.options/8.0.2/microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "/Users/osck53/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "/Users/osck53/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/osck53/.nuget/packages/system.reactive/6.0.0/system.reactive.6.0.0.nupkg.sha512"
   ],

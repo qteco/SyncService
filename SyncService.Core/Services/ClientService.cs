@@ -9,7 +9,6 @@ public class ClientService: IClientService
 {
     private readonly IClientRepository _clientRepository;
     private readonly IClientSiteRepository _clientSiteRepository;
-    
     private readonly ISuperopsApiClient _superopsApiClient;
     public ClientService(IClientRepository clientRepository, ISuperopsApiClient superopsApiClient, IClientSiteRepository clientSiteRepository)
     {

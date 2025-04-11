@@ -6,6 +6,4 @@ public interface IClientSiteRepository
 {
     public Task SyncClientSitesFromSuperops(List<ClientSite> clients, string accountId);
     public Task<List<ClientSite>> GetExistingClientSitesAsync();
-    public Task<Client> GetClientData(Guid clientId);
-    
 }

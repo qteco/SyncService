@@ -20,7 +20,7 @@ public class Client
     [NotMapped]
     public object? CustomFields { get; set; }
     public List<ClientSite>? ClientSites { get; set; }
-    public required string ExactId { get; set; } 
+    public required string ExactCode { get; set; } 
 }
 
 public class AccountManager

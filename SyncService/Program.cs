@@ -17,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IClientSiteRepository, ClientSiteRepository>();
@@ -28,6 +29,7 @@ builder.Services.AddScoped<IExactService, ExactService>();
 
 builder.Services.AddScoped<ISuperopsApiClient, SuperopsApiClient>();
 builder.Services.AddScoped<IExactRepository, ExactRepository>();
+builder.Services.AddScoped<IExactApiClient, ExactApiClient>();
 
 builder.Configuration.AddEnvironmentVariables();
 

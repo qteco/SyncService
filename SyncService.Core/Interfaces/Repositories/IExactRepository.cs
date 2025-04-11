@@ -4,9 +4,12 @@ using SyncService.Core.Models;
 namespace SyncService.Core.Interfaces.Repositories;
 
 public interface IExactRepository
-{ 
-    public bool IsClientInExact(string code);
-    public Task SyncNewClients(List<ExactClientDTO> exactTransferList);
-    public List<ExactClientDTO> CreateExactTransferList(List<Client> clients, List<ClientSite> sites);
-    
+{
+    public Task<bool> IsClientInDatabase(string code);
+    public Task PostClientInDatabase(ExactClientDTO clientDTO);
+    public Task UpdateClientInDatabase(ExactClientDTO clientDTO);
+    public Task SyncClientsToDatabase(List<ExactClientDTO> exactTransferList);
+    public Task<List<ExactClientDTO>> CreateExactTransferList(List<Client> clients, List<ClientSite> sites);
+    public Task<string> GetClientIdFromCode(string code);
+    public Task<string> GetClientCodeFromGuid(string guid);
 }

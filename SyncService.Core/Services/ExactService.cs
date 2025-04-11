@@ -11,30 +11,105 @@ public class ExactService : IExactService
     private readonly IExactRepository _exactRepository;
     private readonly IClientService _clientService;
     private readonly IClientSiteService _clientSiteService;
-
-
-    public ExactService(IExactRepository exactRepository, IClientService clientService, IClientSiteService clientSiteService)
+    private readonly IExactApiClient _exactApiClient;
+    private List<ExactClient> Exactguids { get; set; }
+    private ExactClientDTO NewClient { get; set; }
+    private bool IsInDatabase { get; set; }
+    private bool IsInExact { get; set; }
+    private List<ExactClient> ExactGuids { get; set; }
+    public ExactService(IExactRepository exactRepository, IClientService clientService, IClientSiteService clientSiteService, IExactApiClient exactApiClient)
     {
         _exactRepository = exactRepository;
         _clientService = clientService;
         _clientSiteService = clientSiteService;
+        _exactApiClient = exactApiClient;
     }
-
-    public bool IsClientInExact(string code)
+    public async Task<bool> IsClientInDatabase(string code)
     {
-        return _exactRepository.IsClientInExact(code);
+        return await _exactRepository.IsClientInDatabase(code);
     }
-
-    public async Task SyncNewClients()
+    public async Task SyncClientsToDatabase()
     { 
         List<Client> clients = await _clientService.GetDatabaseClients();
         List<ClientSite> sites = await _clientSiteService.GetExistingClientSitesAsync();
         
-        await _exactRepository.SyncNewClients(CreateExactTransferList(clients, sites));
+        await _exactRepository.SyncClientsToDatabase(await CreateExactTransferList(clients, sites));
+    }
+    public async Task SyncClientsToExact()
+    {
+        List<Client> clients = await _clientService.GetDatabaseClients();
+        List<ClientSite> sites = await _clientSiteService.GetExistingClientSitesAsync();
+        List<ExactClientDTO> exactTransferList = await CreateExactTransferList(clients, sites);
+        ExactGuids = await _exactApiClient.GetAccountGuids();
+        
+        for (int i = 0; i < exactTransferList.Count; i++)
+        {
+            var code = exactTransferList[i].Code;
+            IsInDatabase = await IsClientInDatabase(code);
+            IsInExact = await IsClientInExact(exactTransferList[i].Id);
+            
+            NewClient = new ExactClientDTO()
+            {
+                Code = exactTransferList[i].Code,
+                Id = exactTransferList[i].Id,
+                Name = exactTransferList[i].Name,
+                AddressLine1 = exactTransferList[i].AddressLine1,
+                City = exactTransferList[i].City,
+                Country = exactTransferList[i].Country,
+                Postcode = exactTransferList[i].Postcode,
+                Status = exactTransferList[i].Status,
+                Website = exactTransferList[i].Website,
+            }; 
+
+            if (!IsInExact)
+            {
+                Console.WriteLine($"Client {exactTransferList[i].Name} has not been synced to Exact. Syncing client {code}...");
+                await PostClientAsync(NewClient);
+            }
+            else
+            {
+                Console.WriteLine($"Client {exactTransferList[i].Name} updating client in Exact {code}...");
+                await PutClientAsync(NewClient);
+            }
+        }
+    }
+    public async Task<List<ExactClientDTO>> CreateExactTransferList(List<Client> clients, List<ClientSite> sites)
+    {
+        return await _exactRepository.CreateExactTransferList(clients, sites);
+    }
+    public async Task<List<string>> GetClientCodes()
+    {
+        List<ExactClient> clients = await _exactApiClient.GetAccountGuids();
+        List<string> existingAccountCodes = [];
+
+        foreach (ExactClient client in clients)
+        {
+            var clientDto = await _exactApiClient.GetClientCode(client.Id);
+            if (clientDto != null && !string.IsNullOrWhiteSpace(clientDto.Code))
+            {
+                existingAccountCodes.Add(clientDto.Code);
+            }
+        }
+
+        return existingAccountCodes;
     }
     
-    public List<ExactClientDTO> CreateExactTransferList(List<Client> clients, List<ClientSite> sites)
+    public async Task<List<ExactClient>> GetAccountGuids()
     {
-        return _exactRepository.CreateExactTransferList(clients, sites);
+        return await _exactApiClient.GetAccountGuids();
     }
+    public async Task<HttpResponseMessage> PostClientAsync(ExactClientDTO newClient)
+    {
+        return await _exactApiClient.PostClientAsync(newClient);
+    }
+    public async Task<HttpResponseMessage> PutClientAsync(ExactClientDTO newClient)
+    {
+        return await _exactApiClient.PutClientAsync(newClient);
+    }
+
+    public async Task<bool> IsClientInExact(string guid)
+    {
+        return ExactGuids.Any(c => c.Id == guid);
+    }
+
 }
