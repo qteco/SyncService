@@ -12,7 +12,6 @@ public class ClientSiteService : IClientSiteService
     {
         _clientSiteRepository = clientSiteRepository;
     }
-    
     public async Task<List<ClientSite>> GetExistingClientSitesAsync()
     {
         return await _clientSiteRepository.GetExistingClientSitesAsync();

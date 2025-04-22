@@ -5,16 +5,13 @@ using SyncService.Core.Interfaces.Services;
 using SyncService.Core.Models;
 
 namespace SyncService.Core.Services;
-
 public class ExactService : IExactService
 {
     private readonly IExactRepository _exactRepository;
     private readonly IClientService _clientService;
     private readonly IClientSiteService _clientSiteService;
     private readonly IExactApiClient _exactApiClient;
-    private List<ExactClient> Exactguids { get; set; }
     private ExactClientDTO NewClient { get; set; }
-    private bool IsInDatabase { get; set; }
     private bool IsInExact { get; set; }
     private List<ExactClient> ExactGuids { get; set; }
     public ExactService(IExactRepository exactRepository, IClientService clientService, IClientSiteService clientSiteService, IExactApiClient exactApiClient)
@@ -45,7 +42,6 @@ public class ExactService : IExactService
         for (int i = 0; i < exactTransferList.Count; i++)
         {
             var code = exactTransferList[i].Code;
-            IsInDatabase = await IsClientInDatabase(code);
             IsInExact = await IsClientInExact(exactTransferList[i].Id);
             
             NewClient = new ExactClientDTO()
@@ -93,23 +89,18 @@ public class ExactService : IExactService
 
         return existingAccountCodes;
     }
-    
-    public async Task<List<ExactClient>> GetAccountGuids()
+    public async Task<bool> IsClientInExact(string guid)
     {
-        return await _exactApiClient.GetAccountGuids();
+        return ExactGuids.Any(c => c.Id == guid);
     }
-    public async Task<HttpResponseMessage> PostClientAsync(ExactClientDTO newClient)
-    {
-        return await _exactApiClient.PostClientAsync(newClient);
+    public async Task PostClientAsync(ExactClientDTO newClient)
+    { 
+        await _exactApiClient.PostClientAsync(newClient);
     }
     public async Task<HttpResponseMessage> PutClientAsync(ExactClientDTO newClient)
     {
         return await _exactApiClient.PutClientAsync(newClient);
     }
-
-    public async Task<bool> IsClientInExact(string guid)
-    {
-        return ExactGuids.Any(c => c.Id == guid);
-    }
+    
 
 }

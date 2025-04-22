@@ -20,11 +20,6 @@ public class ClientService: IClientService
     {
         return await _clientRepository.GetExistingClientsAsync();
     }
-
-    public async Task<List<Client>> GetNewClientsAsync()
-    {
-        return await _clientRepository.GetNewClients(await _superopsApiClient.GetClientListAsync());
-    }
     public async Task SyncClients()
     {
         await _clientRepository.SyncClientsFromSuperopsToDatabase(await _superopsApiClient.GetClientListAsync());
@@ -42,11 +37,4 @@ public class ClientService: IClientService
 
         return accountId;
     }
-    
-    public async Task<bool> IsNewClient(Client client)
-    {
-        return await _clientRepository.IsNewClient(client);
-    }
-
-    
 }
