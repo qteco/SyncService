@@ -21,10 +21,14 @@ public class ExactService : IExactService
         _clientSiteService = clientSiteService;
         _exactApiClient = exactApiClient;
     }
+    
+    //Checks if the client is in the database.
     public async Task<bool> IsClientInDatabase(string code)
     {
         return await _exactRepository.IsClientInDatabase(code);
     }
+    
+    //Syncs the extisting (database) clients to the database
     public async Task SyncClientsToDatabase()
     { 
         List<Client> clients = await _clientService.GetDatabaseClients();
@@ -32,6 +36,8 @@ public class ExactService : IExactService
         
         await _exactRepository.SyncClientsToDatabase(await CreateExactTransferList(clients, sites));
     }
+    
+    //Syncs the clients to the CRM platform
     public async Task SyncClientsToExact()
     {
         List<Client> clients = await _clientService.GetDatabaseClients();
@@ -69,6 +75,8 @@ public class ExactService : IExactService
             }
         }
     }
+    
+    //Creates a list to sync the clients.
     public async Task<List<ExactClientDTO>> CreateExactTransferList(List<Client> clients, List<ClientSite> sites)
     {
         return await _exactRepository.CreateExactTransferList(clients, sites);
@@ -93,10 +101,14 @@ public class ExactService : IExactService
     {
         return ExactGuids.Any(c => c.Id == guid);
     }
+    
+    //Method for posting a client in the CRM platform
     public async Task PostClientAsync(ExactClientDTO newClient)
     { 
         await _exactApiClient.PostClientAsync(newClient);
     }
+    
+    //Method for updating a client in the CRM platform
     public async Task<HttpResponseMessage> PutClientAsync(ExactClientDTO newClient)
     {
         return await _exactApiClient.PutClientAsync(newClient);

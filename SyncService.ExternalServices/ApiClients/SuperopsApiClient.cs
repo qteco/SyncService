@@ -26,6 +26,8 @@ public class SuperopsApiClient : ISuperopsApiClient
         GraphQlClient.HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("SuperopsApiToken"));
         GraphQlClient.HttpClient.DefaultRequestHeaders.Add("CustomerSubDomain", _subDomain);
     }
+    
+    //Gets the clients from the RMM platform -> used to sync to database.
     public async Task<List<Client>> GetClientListAsync()
     {
         var request = new GraphQLRequest
@@ -77,6 +79,7 @@ public class SuperopsApiClient : ISuperopsApiClient
         
     }
 
+    //Gets the clientSite data from the RMM platform
     public async Task<List<ClientSite>> GetClientSiteDataAsync(string clientId)
     {
         var query = @"query getClientSites($input: GetClientSiteListInput!) {

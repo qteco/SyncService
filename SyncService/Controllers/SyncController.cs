@@ -17,6 +17,13 @@ public class SyncController : ControllerBase
         _exactService = exactService;
     }
     
+    /* Syncs the following data:
+     1. Clients from the RMM platform to the database
+     2. Clientsites from the RMM platform to the database
+     3. Copies the data from CRM to the database
+     4. Syncs the clients to CRM.
+     */
+    
     [HttpGet("FullSync")]
     public async Task<IActionResult> FullSync()
     {

@@ -20,6 +20,8 @@ public class AuthController : ControllerBase
         _cache = cache;
     }
 
+    //Endpoint to authorize the login of the CRM platform
+    //Authorize flow once at start of application.
     [HttpGet("login")]
     public IActionResult Login()
     {
@@ -34,7 +36,9 @@ public class AuthController : ControllerBase
 
         return Redirect(authUrl); 
     }
+    
 
+    //Callback url to redirect to the login portal
     [HttpGet("callback")]
     public async Task<IActionResult> Callback([FromQuery] string code)
     {
@@ -74,6 +78,7 @@ public class AuthController : ControllerBase
         }
     }
     
+    //Refreshes the auth token when authorized during application runtime.
     [HttpGet("refreshToken")]
     public async Task<IActionResult> RefreshToken([FromQuery] string refreshToken)
     {

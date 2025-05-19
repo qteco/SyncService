@@ -12,6 +12,8 @@ public class ClientSiteService : IClientSiteService
     {
         _clientSiteRepository = clientSiteRepository;
     }
+    
+    //Gets the clientSite data from the RMM platform.
     public async Task<List<ClientSite>> GetExistingClientSitesAsync()
     {
         return await _clientSiteRepository.GetExistingClientSitesAsync();

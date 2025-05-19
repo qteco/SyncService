@@ -26,6 +26,7 @@ public class ExactController : Controller
         return await _exactService.IsClientInDatabase(code);
     }
 
+    //Endpoint to sync clients to the database.
     [HttpGet("SyncClientsToDatabase")]
     public async Task SyncClientsToDatabase()
     {
@@ -44,6 +45,7 @@ public class ExactController : Controller
         return Ok(await _exactService.GetClientCodes());
     }
 
+    //Endpoint to sync clients from the database to the CRM platform.
     [HttpGet("SyncClients")]
     public async Task<IActionResult> SyncClients()
     {
