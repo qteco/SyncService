@@ -9,13 +9,14 @@ using SyncService.Core.Interfaces.Repositories;
 using SyncService.Core.Models;
 
 namespace SyncService.ExternalServices.ApiClients;
+
 public class SuperopsApiClient : ISuperopsApiClient
 {
     private List<Client> Clients { get; set; }
     private List<ClientSite> ClientSites { get; set; }
     private GraphQLHttpClient GraphQlClient { get; }
-    private string _apiToken { get;}
-    
+    private string _apiToken { get; }
+
     private readonly string _uri = "https://api.superops.ai/msp";
 
     private readonly string _subDomain = "qtecobv";
@@ -26,7 +27,7 @@ public class SuperopsApiClient : ISuperopsApiClient
         GraphQlClient.HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("SuperopsApiToken"));
         GraphQlClient.HttpClient.DefaultRequestHeaders.Add("CustomerSubDomain", _subDomain);
     }
-    
+
     //Gets the clients from the RMM platform -> used to sync to database.
     public async Task<List<Client>> GetClientListAsync()
     {
@@ -76,7 +77,7 @@ public class SuperopsApiClient : ISuperopsApiClient
             Console.WriteLine($"Exception occurred: {ex.Message}");
             return Clients;
         }
-        
+
     }
 
     //Gets the clientSite data from the RMM platform
@@ -145,11 +146,100 @@ public class SuperopsApiClient : ISuperopsApiClient
 
             return ClientSites;
         }
-        
+
         catch (Exception ex)
         {
             Console.WriteLine($"Exception occurred: {ex.Message}");
             return ClientSites;
         }
+    }
+
+    public async Task<ServiceItem> GetServiceItems(string id)
+    {
+        ServiceItem service = new ServiceItem();
+        var query = @"query getServiceItem($input: ServiceItemIdentifierInput!) {
+                    getServiceItem(input: $input) {
+                        itemId
+                        name
+                        description
+                        category {
+                            ...ServiceCategoryFragment
+                        }
+                    }
+                }";
+
+        var request = new GraphQLRequest
+        {
+            Query = query,
+            Variables = new
+            {
+                input = new
+                {
+                    ServiceItemIdentifierInput = id
+                }
+            }
+        };
+
+        try
+        {
+            var response = await GraphQlClient.SendQueryAsync<dynamic>(request);
+            var serviceData = response.Data?.getServiceItem;
+
+            if (serviceData != null)
+            {
+                var serviceJson = JsonConvert.SerializeObject(serviceData);
+                service = JsonConvert.DeserializeObject<ServiceItem>(serviceJson);
+                Console.WriteLine($"Deserialized ServiceItem: {serviceJson}");
+                Console.WriteLine($"Deserialized ServiceItem: {service}");
+
+            }
+            else
+            {
+                Console.WriteLine("getServiceItem is null in response.");
+            }
+
+            return service;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception occurred: {ex.Message}");
+        }
+
+        return service;
+    }
+    public async void CreateTicket(Ticket ticket){
+        
+        var request = new GraphQLRequest{
+            Query = @"mutation createTicket($input: CreateTicketInput!) {
+                    createTicket(input: $input) {
+                    subject
+                    client
+                    requester
+                    status
+                    ticketType
+                    source }}",
+
+            Variables = new
+            {
+                input = new
+                {
+                    subject = ticket.Subject,
+                    client = new
+                    {
+                        accountId = ticket.AccountId
+                    },
+                    requester = new
+                    {
+                        userId = ticket.Requesterid
+                    },
+                    status = ticket.Status,
+                    ticketType = ticket.TicketType,
+                    source = ticket.Source
+                }
+            }
+        };
+
+        var response = await GraphQlClient.SendQueryAsync<dynamic>(request);
+        Console.WriteLine(response);
     }
 }

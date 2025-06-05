@@ -61,7 +61,7 @@ public class ExactRepository : IExactRepository
         ExactClient client = new ExactClient()
         {
             Code = clientDTO.Code,
-            Id = clientDTO.Id,
+            Id = Guid.NewGuid().ToString(),
             Name = clientDTO.Name,
             Address = clientDTO.AddressLine1,
             Email = clientDTO.Email,

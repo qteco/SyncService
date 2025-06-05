@@ -18,9 +18,6 @@ namespace SyncService.Tests.RepositoryTests
                 .UseInMemoryDatabase(databaseName: "ClientContext")
                 .Options;
 
-            var configuration = new ConfigurationBuilder()
-                .Build();
-
             _context = new DatabaseContext(options);
             _context.Database.EnsureCreated();
             _clientRepository = new ClientRepository(_context);

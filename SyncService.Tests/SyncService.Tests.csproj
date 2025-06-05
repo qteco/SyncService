@@ -30,4 +30,8 @@
       <ProjectReference Include="..\SyncService.Data\SyncService.Data.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="External Tests\" />
+    </ItemGroup>
+
 </Project>

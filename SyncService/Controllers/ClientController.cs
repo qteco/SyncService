@@ -27,8 +27,8 @@ public class ClientController : ControllerBase
     {
         await _clientService.SyncClients();
     }
-    
-    /* Endpoint to sync clientSites from RMM to database.*/
+
+    //Endpoint to sync clientSites from RMM to database. 
     [HttpGet("SyncClientSites")]
     public async Task SyncClientSites()
     {

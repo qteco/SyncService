@@ -17,7 +17,7 @@ public class ClientService: IClientService
         _clientSiteRepository = clientSiteRepository;
     }
     
-    //Gets the existing clients from the database
+    //Gets the existing (synced) clients from the database
     public async Task<List<Client>> GetDatabaseClients()
     {
         return await _clientRepository.GetExistingClientsAsync();

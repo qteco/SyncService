@@ -22,16 +22,20 @@ builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IClientSiteRepository, ClientSiteRepository>();
 builder.Services.AddScoped<IClientSiteRepository, ClientSiteRepository>();
+builder.Services.AddScoped<IRequesterRepository, RequesterRepository>();
 
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IClientSiteService, ClientSiteService>();
 builder.Services.AddScoped<IExactService, ExactService>();
+builder.Services.AddScoped<IBroadsoftService, BroadsoftService>();
 
 builder.Services.AddScoped<ISuperopsApiClient, SuperopsApiClient>();
 builder.Services.AddScoped<IExactRepository, ExactRepository>();
 builder.Services.AddScoped<IExactApiClient, ExactApiClient>();
+builder.Services.AddScoped<IBroadsoftApiClient, BroadsoftApiClient>();
 
 builder.Configuration.AddEnvironmentVariables();
+
 
 var app = builder.Build();
 

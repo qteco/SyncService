@@ -14,6 +14,8 @@ public class DatabaseContext : DbContext
     public DbSet<ClientSite> ClientSites { get; set; }
     public DbSet<BusinessHour> BusinessHours { get; set; }
     public DbSet<Core.Models.ExactClient> ExactClients { get; set; }
+    
+    public DbSet<Requester> Requesters { get; set; } 
     public DatabaseContext(DbContextOptions options) : base(options) 
     {
     }
@@ -35,6 +37,16 @@ public class DatabaseContext : DbContext
             .WithOne(cs => cs.Client)
             .HasForeignKey(cs => cs.ClientId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        modelBuilder.Entity<Client>()
+            .HasIndex(c => c.AccountId)
+            .IsUnique(); // Ensure uniqueness for relationship
+
+        modelBuilder.Entity<Requester>()
+            .HasOne(r => r.Client)
+            .WithMany()
+            .HasForeignKey(r => r.AccountId)
+            .HasPrincipalKey(c => c.AccountId); // important!
         
         modelBuilder.Entity<Core.Models.ExactClient>()
             .HasOne(ec => ec.Client) 

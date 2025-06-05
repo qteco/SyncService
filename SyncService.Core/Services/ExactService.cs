@@ -42,8 +42,8 @@ public class ExactService : IExactService
     {
         List<Client> clients = await _clientService.GetDatabaseClients();
         List<ClientSite> sites = await _clientSiteService.GetExistingClientSitesAsync();
-        List<ExactClientDTO> exactTransferList = await CreateExactTransferList(clients, sites);
-        ExactGuids = await _exactApiClient.GetAccountGuids();
+        List<ExactClientDTO> exactTransferList = await CreateExactTransferList(clients, sites); //Creates the list to sync the clients
+        ExactGuids = await _exactApiClient.GetAccountGuids(); //List to check if the client is in Exact
         
         for (int i = 0; i < exactTransferList.Count; i++)
         {
@@ -81,6 +81,8 @@ public class ExactService : IExactService
     {
         return await _exactRepository.CreateExactTransferList(clients, sites);
     }
+
+
     public async Task<List<string>> GetClientCodes()
     {
         List<ExactClient> clients = await _exactApiClient.GetAccountGuids();
@@ -97,6 +99,8 @@ public class ExactService : IExactService
 
         return existingAccountCodes;
     }
+
+    //Checks if the string is in the list of Exact clients 
     public async Task<bool> IsClientInExact(string guid)
     {
         return ExactGuids.Any(c => c.Id == guid);
@@ -113,6 +117,4 @@ public class ExactService : IExactService
     {
         return await _exactApiClient.PutClientAsync(newClient);
     }
-    
-
 }

@@ -6,6 +6,8 @@ namespace SyncService.Core.Interfaces.ApiClients
     {
         public Task<List<Client>> GetClientListAsync();
         public Task<List<ClientSite>> GetClientSiteDataAsync(string accountId);
+        public Task<ServiceItem> GetServiceItems(string id);
+        public void CreateTicket(Ticket ticket);
     }
 }
 
