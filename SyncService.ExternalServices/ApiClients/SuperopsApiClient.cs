@@ -154,7 +154,7 @@ public class SuperopsApiClient : ISuperopsApiClient
         }
     }
 
-    public async Task<ServiceItem> GetServiceItems(string id)
+    /* public async Task<ServiceItem> GetServiceItems(string id)
     {
         ServiceItem service = new ServiceItem();
         var query = @"query getServiceItem($input: ServiceItemIdentifierInput!) {
@@ -206,7 +206,7 @@ public class SuperopsApiClient : ISuperopsApiClient
         }
 
         return service;
-    }
+    }*/
     public async void CreateTicket(Ticket ticket){
         
         var request = new GraphQLRequest{
