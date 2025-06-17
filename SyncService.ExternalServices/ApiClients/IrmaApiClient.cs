@@ -19,6 +19,8 @@ public class IrmaApiClient : IIrmaApiClient
     public IrmaApiClient() 
     {
         Endpoint = "https://service-accept.grexx.today/interfaces/routit/yav58bpfycatxp6i5291/realtime";
+        Username = Environment.GetEnvironmentVariable("IrmaUsername");
+        Password = Environment.GetEnvironmentVariable("IrmaPassword");
         HttpClient = new HttpClient();
     }
     public async Task GetInvoices()

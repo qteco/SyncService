@@ -10,8 +10,8 @@ namespace SyncService.ExternalServices.ApiClients;
 public class BroadsoftApiClient : IBroadsoftApiClient
 {
     private  string BaseUrl = "https://cai.voipit.nl/nl.cai.xsi-actions/v2.0/callcenter/CC_testbanaan@qteco.voipit.nl/calls";
-    private  string UserId {get;set;}
-    private  string Password {get;set;}
+    private  string UserId = Environment.GetEnvironmentVariable("BroadsoftUserId");
+    private  string Password = Environment.GetEnvironmentVariable("BroadsoftPassword");
     private readonly HttpClient HttpClient;
     public BroadsoftApiClient()
     {
