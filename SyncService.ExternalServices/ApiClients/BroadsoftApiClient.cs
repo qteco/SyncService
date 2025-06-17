@@ -9,11 +9,10 @@ namespace SyncService.ExternalServices.ApiClients;
 
 public class BroadsoftApiClient : IBroadsoftApiClient
 {
-    private  string BaseUrl { get; set; }
-    private  string UserId { get; set; }
-    private  string Password { get; set; }
+    private  string BaseUrl = "https://cai.voipit.nl/nl.cai.xsi-actions/v2.0/callcenter/CC_testbanaan@qteco.voipit.nl/calls";
+    private  string UserId {get;set;}
+    private  string Password {get;set;}
     private readonly HttpClient HttpClient;
-
     public BroadsoftApiClient()
     {
         HttpClient = new HttpClient();
@@ -22,7 +21,7 @@ public class BroadsoftApiClient : IBroadsoftApiClient
             Convert.ToBase64String(Encoding.ASCII.GetBytes($"{UserId}:{Password}"))
         );
     }
-
+    
     public async Task<(string CallId, string PhoneNumber)?> GetLatestCallAsync()
     {
         var response = await HttpClient.GetAsync(BaseUrl);

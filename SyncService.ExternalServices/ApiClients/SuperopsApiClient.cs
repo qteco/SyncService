@@ -12,7 +12,7 @@ namespace SyncService.ExternalServices.ApiClients;
 
 public class SuperopsApiClient : ISuperopsApiClient
 {
-    private List<Client> Clients { get; set; }
+    private List<Client> Services { get; set; }
     private List<ClientSite> ClientSites { get; set; }
     private GraphQLHttpClient GraphQlClient { get; }
     private string _apiToken { get; }
@@ -24,7 +24,9 @@ public class SuperopsApiClient : ISuperopsApiClient
     public SuperopsApiClient()
     {
         GraphQlClient = new GraphQLHttpClient(_uri, new NewtonsoftJsonSerializer());
-        GraphQlClient.HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("SuperopsApiToken"));
+        GraphQlClient.HttpClient.DefaultRequestHeaders.Authorization =
+            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",
+                Environment.GetEnvironmentVariable("SuperopsApiToken"));
         GraphQlClient.HttpClient.DefaultRequestHeaders.Add("CustomerSubDomain", _subDomain);
     }
 
@@ -67,15 +69,15 @@ public class SuperopsApiClient : ISuperopsApiClient
         {
             var response = await GraphQlClient.SendQueryAsync<dynamic>(request);
             var clientsJson = JsonConvert.SerializeObject(response.Data.getClientList.clients);
-            Clients = JsonConvert.DeserializeObject<List<Client>>(clientsJson);
+            Services = JsonConvert.DeserializeObject<List<Client>>(clientsJson);
 
-            return Clients;
+            return Services;
         }
 
         catch (Exception ex)
         {
             Console.WriteLine($"Exception occurred: {ex.Message}");
-            return Clients;
+            return Services;
         }
 
     }
@@ -154,7 +156,7 @@ public class SuperopsApiClient : ISuperopsApiClient
         }
     }
 
-    /* public async Task<ServiceItem> GetServiceItems(string id)
+    public async Task<ServiceItem> GetServiceItems(string id)
     {
         ServiceItem service = new ServiceItem();
         var query = @"query getServiceItem($input: ServiceItemIdentifierInput!) {
@@ -206,8 +208,67 @@ public class SuperopsApiClient : ISuperopsApiClient
         }
 
         return service;
-    }*/
-    public async void CreateTicket(Ticket ticket){
+    }
+
+    public async Task<List<ServiceItem>> GetServiceItemList()
+    {
+        var request = new GraphQLRequest
+        {
+            Query = @"
+                query getServiceItemList($input: ListInfoInput!) {
+                      getServiceItemList(input: $input) {
+                        items {
+                          ...ServiceItemFragment
+                        }
+                      }
+                    }
+
+                fragment ServiceItemFragment on ServiceItem {
+                  itemId
+                  name
+                  description
+                  quantityType
+                  useAsWorklogItem
+                  unitPrice
+                  businessHoursUnitPrice
+                  afterHoursUnitPrice
+                  roundUpValue
+                  quantity
+                  amount
+                  adjustBlockItemAgainstAllItems
+                  salesTaxEnabled
+                }",
+            
+            Variables = new
+            {
+                input = new
+                {
+                    page = 1,
+                    pageSize = 1000
+                }
+            }
+        };
+        
+        try
+        {
+            var response = await GraphQlClient.SendQueryAsync<dynamic>(request);
+            var serviceJson = JsonConvert.SerializeObject(response.Data.getServiceItemList.items);
+            List<ServiceItem> Services = new List<ServiceItem>(); 
+            Services = JsonConvert.DeserializeObject<List<ServiceItem>>(serviceJson);
+            var rawResponse = JsonConvert.SerializeObject(response);
+            Console.WriteLine(rawResponse);
+
+            return Services;
+        }
+
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception occurred: {ex.Message}");
+            return new List<ServiceItem>();
+        }
+    }
+
+public async void CreateTicket(Ticket ticket){
         
         var request = new GraphQLRequest{
             Query = @"mutation createTicket($input: CreateTicketInput!) {
@@ -242,4 +303,5 @@ public class SuperopsApiClient : ISuperopsApiClient
         var response = await GraphQlClient.SendQueryAsync<dynamic>(request);
         Console.WriteLine(response);
     }
+    
 }

@@ -33,6 +33,8 @@ builder.Services.AddScoped<ISuperopsApiClient, SuperopsApiClient>();
 builder.Services.AddScoped<IExactRepository, ExactRepository>();
 builder.Services.AddScoped<IExactApiClient, ExactApiClient>();
 builder.Services.AddScoped<IBroadsoftApiClient, BroadsoftApiClient>();
+builder.Services.AddScoped<IIrmaApiClient, IrmaApiClient>();
+
 
 builder.Configuration.AddEnvironmentVariables();
 
